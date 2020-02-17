@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/homeStyle.css">
+</head>
+<body>
+    {{>navbar}}
+    <div class="container">
+        <h1>Página Home</h1>
+        <h4>Categorias</h4>
+        <figure>
+            <img src="/assets/img/salgados.jpeg" class="imgsCategorias"/>
+            <figcaption>Salgados</figcaption>
+        </figure>
+
+        <figure>
+            <img src="/assets/img/bebidas2.jpg" class="imgsCategorias"/>
+            <figcaption>Bebidas</figcaption>
+        </figure>
+
+        <figure>
+            <img src="/assets/img/doces2.jpg" class="imgsCategorias"/>
+            <figcaption>Doces</figcaption>
+        </figure>
+
+        <figure>
+            <img src="/assets/img/pizzas.jpg" class="imgsCategorias"/>
+            <figcaption>Pizzas</figcaption>
+        </figure>
+
+        <figure>
+            <img src="/assets/img/lanches2.jpg" class="imgsCategorias"/>
+            <figcaption>Lanches</figcaption>
+        </figure>
+
+        <br/>
+
+        {{#result}}
+        <div class="card" style="width: 300px;">
+            {{#imagem}}
+                <img src="/media/{{imagem}}" style="width: 100%"/>
+            {{/imagem}}
+            <div class="card-body pt-2">
+                <h4 class="card-title">{{nome}}</h4>
+                <p class="card-text">{{descricao}}</p>
+                <strong><span class="preco">R$ {{preco}}</span></strong>
+
+                <br/><br/>
+                
+                <a href="/foodapp/apagar/{{id}}">
+                    <button class="btn btn-danger">Apagar</button>
+                </a>
+                <a href="/foodapp/editar/{{id}}">
+                    <button class="btn btn-success">Atualizar</button>
+                </a>
+            </div>
+        </div>
+        {{/result}}
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+.imgsCategorias {
+    width: 100px;
+    border-radius: 50%;
+}
+
+figure {
+    display: inline-block;
+    margin-right: 7px;
+}
+figcaption {
+    text-align: center;
+}
+
+.card {
+    display: inline-block;
+    margin: 5px;
+}
+
+span.preco {
+    color: #077e07;
+}
