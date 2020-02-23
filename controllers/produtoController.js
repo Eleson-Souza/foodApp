@@ -5,7 +5,11 @@ exports.cadastro = (req, res) => {
 };
 
 exports.cadastroAction = (req, res) => {
-    var sql = `insert into produto (nome, descricao, preco, imagem) values ('${req.body.nome}', '${req.body.descricao}', ${req.body.preco}, '${req.body.imagem}')`;
+    // troca vírgula por ponto, para ser inserido no banco.
+    const p = req.body.preco;
+    let preco = p.replace(',', '.').replace('.', '');
+
+    var sql = `insert into produto (nome, descricao, preco, imagem) values ('${req.body.nome}', '${req.body.descricao}', ${preco}, '${req.body.imagem}')`;
     conexao.query(sql, (erro, result) => {
         if(erro) {
             console.log('Erro ao inserir: ' + erro);
@@ -28,11 +32,14 @@ exports.editar = (req, res) => {
 };
 
 exports.editarAction = (req, res) => {
+    const p = req.body.preco;
+    let preco = p.replace('.', '').replace(',', '.');
+    console.log(preco);
     let sql;
     if(req.body.imagem) {
         sql = `update produto set nome = '${req.body.nome}', descricao = '${req.body.descricao}', preco = ${req.body.preco}, imagem = '${req.body.imagem}' where id = ${req.params.id}`;
     } else {
-        sql = `update produto set nome = '${req.body.nome}', descricao = '${req.body.descricao}', preco = ${req.body.preco} where id = ${req.params.id}`
+        sql = `update produto set nome = '${req.body.nome}', descricao = '${req.body.descricao}', preco = ${preco} where id = ${req.params.id}`
     }
     
     conexao.query(sql, (erro, result) => {

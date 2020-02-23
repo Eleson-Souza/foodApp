@@ -21,5 +21,5 @@ app.use('/foodapp', router);
 
 app.set('port', 1122);
 app.listen(app.get('port'), () => {
-    console.log('Aplicação rodando normalmente na porta 2222');
+    console.log('Aplicação rodando normalmente na porta 1122');
 });
