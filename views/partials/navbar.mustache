@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/foodapp">FoodApp</a>
+  <a class="navbar-brand" href="/foodapp">
+    <img src="/assets/img/hamburger.png" width="50" alt="FoodApp">
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -33,3 +35,24 @@
     </form>
   </div>
 </nav>
+
+{{#flashes}}
+  {{#success}}
+    <div class="alert alert-success alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
+      <strong>{{.}}</strong>
+    </div>
+  {{/success}}
+  {{#error}}
+    <div class="alert alert-danger alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
+      {{.}}
+    </div>
+  {{/error}}
+  {{#info}}
+    <div class="alert alert-info alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
+      {{.}}
+    </div>
+  {{/info}}
+{{/flashes}}

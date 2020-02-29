@@ -23,6 +23,23 @@
                 <input type="text" name="descricao" id="descricao" class="form-control" value="{{descricao}}">
             </div>
             <div class="form-group">
+                <label for="tipo_produto">Tipo de alimento</label>
+                <select id="tipo_produto" name="tipo_produto" class="form-control">
+                    <option>Selecione uma opção</option>
+                    <option>Açaí</option>
+                    <option>Bebida</option>
+                    <option>Brasileira</option>
+                    <option>Doce</option>
+                    <option>Japonesa</option>
+                    <option>Lanche</option>
+                    <option>Marmita</option>
+                    <option>Pizza</option>
+                    <option>Salgado</option>
+                    <option>Sorvete</option>
+                    <option>Outro</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="preco">Preço</label>
                 <input type="text" name="preco" id="preco" class="form-control" value="{{preco}}" required>
             </div>
@@ -48,6 +65,7 @@
     <script src="/assets/plugins/jquery.mask.min.js"></script>
     <script>
         $('#preco').mask('999.999.990,00', {reverse: true});
+        
     </script>
 </body>
 </html>

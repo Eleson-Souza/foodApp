@@ -19,3 +19,25 @@ figcaption {
 span.preco {
     color: #077e07;
 }
+
+.container_foods {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.rodape {
+    border-top: 1px solid rgba(0, 0, 0, 0.247);
+    margin-top: 20px;
+    padding: 20px 0px;
+    text-align: center;
+}
+
+.categoria {
+    color: #585858;
+}
+
+.categoria:hover {
+    text-decoration: none;
+    color: #000;
+}

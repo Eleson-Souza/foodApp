@@ -22,4 +22,6 @@ router.post('/editar/:id',
 
 router.get('/apagar/:id', produtoController.apagar);
 
+router.get('/categorias/:nomeCategoria', produtoController.buscarCategoria);
+
 module.exports = router;
