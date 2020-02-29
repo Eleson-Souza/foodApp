@@ -23,5 +23,6 @@ router.post('/editar/:id',
 router.get('/apagar/:id', produtoController.apagar);
 
 router.get('/categorias/:nomeCategoria', produtoController.buscarCategoria);
+router.get('/busca/:texto', produtoController.buscarPorTexto);
 
 module.exports = router;

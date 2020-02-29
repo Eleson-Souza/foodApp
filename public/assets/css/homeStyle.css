@@ -1,3 +1,25 @@
+.busca {
+    width: 25vw;
+    float: right;
+    margin-top: 10px;
+    padding: 5px;
+    border: solid 1px #c0c0c0;
+    border-radius: 7px;
+    background-color: #00000028;
+}
+.busca img {
+    height: 30px;
+}
+.busca input {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+.busca input:focus {
+    background-color: rgba(0, 0, 0, 0);
+    color: #000;
+    box-shadow: none;
+}
+
 .imgsCategorias {
     width: 100px;
     border-radius: 50%;

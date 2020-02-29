@@ -79,3 +79,16 @@ exports.buscarCategoria = (req, res) => {
         res.render('home', { result });
     });
 };
+
+exports.buscarPorTexto = (req, res) => {
+    conexao.query(`select * from Produto where nome like '%${req.params.texto}%' or descricao like '%${req.params.texto}%'`, (erro, result) => {
+        if(erro) {
+            req.flash('error', `Houve um erro ao realizar a busca: ${erro}`);
+            return;
+        }
+        
+        let texto = req.params.texto;
+        conversorFormatPreco.formatarPreco(result);
+        res.render('home', { result, texto });
+    });
+};

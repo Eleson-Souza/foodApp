@@ -10,9 +10,13 @@
 <body>
     {{>navbar}}
     <div class="container">
+        <div class="form-inline busca">
+            <img src="/assets/img/icons/search.png">
+            <input class="form-control" name="busca" id="campoBusca" type="search" placeholder="Pesquise por prato" size="34" onkeyup="confirmar(event)">
+        </div>
         <h1>Página Home</h1>
-        <h4>Categorias</h4>
-        
+        <h4 class="mb-3">Categorias</h4>
+                        
         <figure>
             <a href="/foodapp/categorias/salgado" class="categoria">
                 <img src="/assets/img/salgados.jpeg" class="imgsCategorias"/>
@@ -108,6 +112,9 @@
                 </div>
             </div>
             {{/result}}
+            {{^result}}
+                <h4 class="mt-2">Nenhum prato encontrado para essa pesquisa ({{texto}}) :( !</h4>
+            {{/result}}
         </div>
     </div>
     <footer class="rodape">
@@ -119,5 +126,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="/assets/scripts/enterSubmit.js"></script>
 </body>
 </html>
