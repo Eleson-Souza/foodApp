@@ -92,3 +92,16 @@ exports.buscarPorTexto = (req, res) => {
         res.render('home', { result, texto });
     });
 };
+
+/* exports.abrirModal = (req, res) => {
+    conexao.query(`select * from Produto where id = ${req.params.id}`, (erro, result) => {
+        if(erro) {
+            req.flash('error', 'Houve o seguinte erro: ' + erro);
+        }
+        
+        let body = document.getElementsByTagName('body')[0];
+        body.innerHTML = `        
+        <strong>TESTE</strong>
+        `;
+    });
+}; */

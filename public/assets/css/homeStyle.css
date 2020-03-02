@@ -35,7 +35,21 @@ figcaption {
 
 .card {
     display: inline-block;
+    width: 302px;
     margin: 5px;
+}
+
+.card:hover {
+    border: 1px solid #929292;
+}
+
+.card a {
+    color: #000;
+}
+
+.card a:hover {
+    text-decoration: none;
+    color: #363636;
 }
 
 span.preco {
