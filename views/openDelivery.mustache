@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/openDelivery.css">
+</head>
+<body>
+    {{>navbar}}
+    <div class="container">
+        {{#result}}
+
+        <div class="row mt-4">
+            <div class="col">
+                <img src="/media/{{imagem}}" class="img-responsive produto"/>
+            </div>
+            <div class="col">
+                <h1>{{nome}}</h1>
+                <h3>{{descricao}}</h3>
+
+                <div class="container_compra-quant">
+                    <div class="container_preco-botao">
+                        <h1>
+                            R$ <span id="preco">{{preco}}</span>
+                        </h1>
+                        <button class="btn btn-primary adicionar">+ Adicionar</button>
+                    </div>
+
+                    <div class="quant_produto">
+                        <div class="quant_produto_menos">
+                            <img src="/assets/img/icons/minus.png" id="img_menos" onclick="diminuir()"/>
+                        </div>
+                        <span id="quant">1</span>
+                        <div class="quant_produto_mais">
+                            <img src="/assets/img/icons/more.png" id="img_mais" onclick="aumentar()"/>
+                        <div>
+                    <div>
+                </div>
+            </div>
+        </div>
+        {{/result}}
+    </div>
+    {{! <footer class="rodape">
+        &copy; Copyright 2020 - Eleson Souza - Todos os direitos reservados.
+    </footer> }}
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="/assets/scripts/enterSubmit.js"></script>
+    <script src="/assets/scripts/quantProduto.js"></script>
+</body>
+</html>

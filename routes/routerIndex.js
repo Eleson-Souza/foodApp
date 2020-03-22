@@ -26,6 +26,6 @@ router.get('/categorias/:nomeCategoria', produtoController.buscarCategoria);
 
 router.get('/busca/:texto', produtoController.buscarPorTexto);
 
-//router.get('/modal/:id', produtoController.abrirModal);
+router.get('/delivery/:id', produtoController.abrirProduto);
 
 module.exports = router;

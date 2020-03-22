@@ -93,15 +93,15 @@ exports.buscarPorTexto = (req, res) => {
     });
 };
 
-/* exports.abrirModal = (req, res) => {
-    conexao.query(`select * from Produto where id = ${req.params.id}`, (erro, result) => {
+exports.abrirProduto = (req, res) => {
+    let id = req.params.id;
+    conexao.query(`select * from Produto where id = ${id}`, (erro, result) => {
         if(erro) {
-            req.flash('error', 'Houve o seguinte erro: ' + erro);
+            req.flash('error', 'Houve um erro ao abrir o produto, tente novamente!');
+            return;
         }
-        
-        let body = document.getElementsByTagName('body')[0];
-        body.innerHTML = `        
-        <strong>TESTE</strong>
-        `;
+
+        conversorFormatPreco.formatarPreco(result);
+        res.render('openDelivery', { result });
     });
-}; */
+};

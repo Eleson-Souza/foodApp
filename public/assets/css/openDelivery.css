@@ -1,0 +1,103 @@
+.adicionar {
+    width: 200px;
+    height: 50px;
+    font-size: 15pt;
+}
+
+.produto {
+    width: 600px;
+    border-radius: 8px;
+}
+
+.container_preco-botao {
+    width: fit-content;
+    text-align: center;
+}
+
+.quant_produto {
+    border: 1px solid #808080;
+    border-radius: 4px;
+    width: fit-content;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    margin-left: 10px;
+    padding: 10px;
+}
+
+.quant_produto div {
+    display: inline-block;
+}
+
+.col {
+    position: relative;
+}
+
+.col div {
+    display: inline-block;
+}
+
+.quant_produto div img {
+    width: 16px;
+    cursor: pointer;
+}
+
+.quant_produto_menos {
+    margin-right: 15px;
+}
+
+.quant_produto_mais {
+    margin-left: 15px;
+}
+
+#quant {
+    font-size: 15pt;
+}
+
+.container_compra-quant {
+    position: absolute;
+    bottom: 0px;
+    left: calc(50% - 162.5px);
+    width: 325px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .produto {
+        width: 500px;
+    }
+    h1 {
+        font-size: 35px;
+    }
+    h3 {
+        font-size: 23px;
+    }
+ }
+
+@media only screen and (max-width: 992px) {
+    .produto {
+        width: 360px;
+    }
+    h1 {
+        font-size: 28px;
+    }
+    h3 {
+        font-size: 16px;
+    }
+    .adicionar {
+        width: 120px;
+        height: 40px;
+        font-size: 12pt;
+    }
+    .quant_produto {
+        height: 40px;
+    }
+    #img_mais, #img_menos {
+        width: 10px;
+    }
+    span#quant {
+        font-size: 16px;
+    }
+    .container_compra-quant {
+        width: 220px;
+    }
+ }
