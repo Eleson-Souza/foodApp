@@ -1,3 +1,14 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.container {
+    transition: all 0.8s linear;
+    left: 105px;
+}
+
 .adicionar {
     width: 200px;
     height: 50px;
@@ -7,6 +18,7 @@
 .produto {
     width: 600px;
     border-radius: 8px;
+    transition: all 0.8s linear;
 }
 
 .container_preco-botao {
@@ -100,4 +112,29 @@
     .container_compra-quant {
         width: 220px;
     }
+ }
+
+ .cesta {
+     visibility: hidden;
+     background-color: #ececec;
+     width: 0px;
+     position: absolute;
+     top: 88.5px;
+     right: 0px;
+     transition: width 0.8s linear;
+     padding: 5px 10px;
+     box-shadow: -1px 1px 5px #000;;
+ }
+
+ .cesta-header {
+    border-bottom: 1px solid #a8a8a8;
+ }
+
+ .cesta-body {
+     margin-top: 15px;
+ }
+
+ #preco-total {
+     border-top: 1px solid #a8a8a8;
+     padding-top: 5px;
  }

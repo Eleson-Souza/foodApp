@@ -29,10 +29,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// Configura o motor que será utilizado na aplicação (mustache).
-app.engine('mustache', mustache(__dirname+'/views/partials', '.mustache'));
-app.set('view engine', 'mustache'); // Define o motor de visualização (layout).
-app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs'); // Define o motor de visualização (layout).
 
 app.use('/foodapp', router);
 

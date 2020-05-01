@@ -8,24 +8,23 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/openDelivery.css">
 </head>
 <body>
-    {{>navbar}}
+    <%- include('partials/navbar.ejs') %>
     <div class="container">
-        {{#result}}
 
         <div class="row mt-4">
             <div class="col">
-                <img src="/media/{{imagem}}" class="img-responsive produto"/>
+                <img src="/media/<%= result.imagem %>" class="img-responsive produto"/>
             </div>
             <div class="col">
-                <h1>{{nome}}</h1>
-                <h3>{{descricao}}</h3>
+                <h1 id="nome-produto"><%= result.nome %></h1>
+                <h3 id="descricao-produto"><%= result.descricao %></h3>
 
                 <div class="container_compra-quant">
                     <div class="container_preco-botao">
                         <h1>
-                            R$ <span id="preco">{{preco}}</span>
+                            R$ <span id="preco"><%= result.preco %></span>
                         </h1>
-                        <button class="btn btn-primary adicionar">+ Adicionar</button>
+                        <button type="button" class="btn btn-primary adicionar" onclick="adicionarCesta();diminuirPagina()">+ Adicionar</button>
                     </div>
 
                     <div class="quant_produto">
@@ -35,16 +34,33 @@
                         <span id="quant">1</span>
                         <div class="quant_produto_mais">
                             <img src="/assets/img/icons/more.png" id="img_mais" onclick="aumentar()"/>
-                        <div>
-                    <div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        {{/result}}
-    </div>
-    {{! <footer class="rodape">
+
+        <footer class="rodape">
         &copy; Copyright 2020 - Eleson Souza - Todos os direitos reservados.
-    </footer> }}
+    </footer>
+    </div>
+
+    <br/>
+        <div class="cesta">
+            <div class="cesta-header">
+                <h5>Todos os Pedidos</h5>
+            </div>
+            <div class="cesta-body">
+                <p id="lista-cesta">
+
+                </p>
+                <p id="preco-total">
+                    Total <span style="float: right">R$ 0,00</span>
+                </p>
+            </div>
+        </div> 
+
+    <%- include('partials/carrinho.ejs') %>
 
 
 
@@ -52,6 +68,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="/assets/scripts/enterSubmit.js"></script>
-    <script src="/assets/scripts/quantProduto.js"></script>
+    <script src="/assets/scripts/quantProduto.js"></script>    
+
 </body>
 </html>

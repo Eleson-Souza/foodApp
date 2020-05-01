@@ -8,19 +8,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
-    {{>navbar}}
+    <%- include('partials/navbar.ejs') %>
     <div class="container">
         <h1>Edição</h1>
 
-        {{#result}}
         <form method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" class="form-control" value="{{nome}}" required>
+                <input type="text" name="nome" id="nome" class="form-control" value="<%= result.nome %>" required>
             </div>
             <div class="form-group">
                 <label for="descricao">Descrição</label>
-                <input type="text" name="descricao" id="descricao" class="form-control" value="{{descricao}}">
+                <input type="text" name="descricao" id="descricao" class="form-control" value="<%= result.descricao %>">
             </div>
             <div class="form-group">
                 <label for="tipo_produto">Tipo de alimento</label>
@@ -41,23 +40,19 @@
             </div>
             <div class="form-group">
                 <label for="preco">Preço</label>
-                <input type="text" name="preco" id="preco" class="form-control" value="{{preco}}" required>
+                <input type="text" name="preco" id="preco" class="form-control" value="<%= result.preco %>" required>
             </div>
             <div class="form-group">
                 <label for="preco">Imagem</label>
                 <input type="file" name="imagem" id="imagem" class="form-control">
-                {{#imagem}}
-                    <img src="/media/{{imagem}}" width="300px"/>
-                {{/imagem}}
-                {{^imagem}}
-                    <h6 class="mt-2">Nenhuma imagem salva</h6>
-                {{/imagem}}
+
+                <img src="/media/<%= result.imagem %>" width="300px"/>
+                <h6 class="mt-2">Nenhuma imagem salva</h6>
             </div>
 
             <button type="reset" class="btn btn-danger">Limpar</button>
             <button type="submit" class="btn btn-success">Atualizar</button>
         </form>
-        {{/result}}
     </div>
 
     <script src="/assets/plugins/jquery-3.4.1.min.js"></script>

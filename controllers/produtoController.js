@@ -8,7 +8,7 @@ exports.cadastro = (req, res) => {
 exports.cadastroAction = (req, res) => {
     // troca vírgula por ponto, para ser inserido no banco.
     const p = req.body.preco;
-    let preco = p.replace(',', '.').replace('.', '');
+    let preco = p.replace(',', '.');
 
     var sql = `insert into produto (nome, descricao, tipo_produto, preco, imagem) values ('${req.body.nome}', '${req.body.descricao}', '${req.body.tipo_produto}', ${preco}, '${req.body.imagem}')`;
     conexao.query(sql, (erro, result) => {
@@ -30,7 +30,7 @@ exports.editar = (req, res) => {
         }
 
         result[0].preco = (result[0].preco).toFixed(2).replace('.', ',');
-        res.render('edicao', { result });
+        res.render('edicao', { result: result[0] });
     });
 };
 
@@ -102,6 +102,6 @@ exports.abrirProduto = (req, res) => {
         }
 
         conversorFormatPreco.formatarPreco(result);
-        res.render('openDelivery', { result });
+        res.render('openDelivery', { result: result[0] });
     });
 };

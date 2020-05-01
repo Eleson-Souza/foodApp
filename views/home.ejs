@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/homeStyle.css">
 </head>
 <body>
-    {{>navbar}}
+    <%- include('partials/navbar.ejs') %>
     <div class="container">
         <div class="form-inline busca">
             <img src="/assets/img/icons/search.png">
@@ -91,42 +91,35 @@
         <br/>
 
         <div class="container_foods">
-            {{#result}}
-
-            <!-- Card -->
-            <div class="card">
-                <a href="foodapp/delivery/{{id}}">
-                    {{#imagem}}
-                        <img src="/media/{{imagem}}" style="width: 100%"/>
-                    {{/imagem}}
-                <div class="card-body pt-2">
-                    <h4 class="card-title">{{nome}}</h4>
-                </a>
-                    <p class="card-text">{{descricao}}</p>
-                    <strong><span class="preco">R$ {{preco}}</span></strong>
-
-                    <br/><br/>
-                    
-                    <a href="/foodapp/apagar/{{id}}">
-                        <button class="btn btn-danger">Apagar</button>
+            <% result.forEach(res => { %>
+                <!-- Card -->
+                <div class="card">
+                    <a href="foodapp/delivery/<%= res.id %>">
+                        <img src="/media/<%= res.imagem %>" style="width: 100%"/>
+                    <div class="card-body pt-2">
+                        <h4 class="card-title"><%= res.nome %></h4>
                     </a>
-                    <a href="/foodapp/editar/{{id}}">
-                        <button class="btn btn-success">Atualizar</button>
-                    </a>
+                        <p class="card-text"><%= res.descricao %></p>
+                        <strong><span class="preco">R$ <%= res.preco %></span></strong>
+
+                        <br/><br/>
+                        
+                        <a href="/foodapp/apagar/<%= res.id %>">
+                            <button class="btn btn-danger">Apagar</button>
+                        </a>
+                        <a href="/foodapp/editar/<%= res.id %>">
+                            <button class="btn btn-success">Atualizar</button>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            <% }); %>
 
-            {{/result}}
-
-            {{^result}}
-                <h4 class="mt-2">Nenhum prato encontrado para essa pesquisa ({{texto}}) :( !</h4>
-            {{/result}}
+            <% if(result.lenght == 0) { %>
+                <h4 class="mt-2">Nenhum prato encontrado para essa pesquisa :( !</h4>
+            <% } %>
         </div> <!-- /Card -->
-
-        {{#produto}}
-            <label>{{nome}}</label>
-        {{/produto}}
     </div>
+
     <footer class="rodape">
         &copy; Copyright 2020 - Eleson Souza - Todos os direitos reservados.
     </footer>
