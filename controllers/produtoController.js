@@ -2,7 +2,9 @@ const conexao = require('../models/Conexao');
 const conversorFormatPreco = require('../public/assets/utils/conversorFormatPreco');
 
 exports.cadastro = (req, res) => {
-    res.render('cadastro');
+    conexao.query('select * from categoria order by nome asc', (erro, categorias) => {
+        res.render('produto/cadastro', {categorias});
+    });
 };
 
 exports.cadastroAction = (req, res) => {
@@ -29,8 +31,10 @@ exports.editar = (req, res) => {
             return;
         }
 
-        result[0].preco = (result[0].preco).toFixed(2).replace('.', ',');
-        res.render('edicao', { result: result[0] });
+        conexao.query('select * from categoria order by nome asc', (erro, categorias) => {
+            result[0].preco = (result[0].preco).toFixed(2).replace('.', ',');
+            res.render('produto/edicao', { result: result[0], categorias: categorias });
+        });
     });
 };
 
@@ -52,19 +56,19 @@ exports.editarAction = (req, res) => {
         }
 
         req.flash('success', 'Produto atualizado com sucesso!');        
-        res.redirect('/foodapp');
+        res.redirect('/foodapp/comidas');
     });
 };
 
 exports.apagar = (req, res) => {
-    conexao.query(`delete from produto where id = ${req.params.id}`, (erro) => {
+    conexao.query(`delete from produto where id = ${req.body.id}`, (erro) => {
         if(erro) {
             req.flash('error', 'Houve um erro ao excluir o produto: ' + erro);
             return;
         }
 
         req.flash('error', 'Produto excluido com sucesso!');
-        res.redirect('/foodapp');
+        res.redirect('/foodapp/comidas');
     });
 };
 
@@ -102,6 +106,16 @@ exports.abrirProduto = (req, res) => {
         }
 
         conversorFormatPreco.formatarPreco(result);
-        res.render('openDelivery', { result: result[0] });
+        res.render('produto/openDelivery', { result: result[0] });
+    });
+};
+
+exports.abrirTodosProdutos = (req, res) => {
+    conexao.query(`select * from produto`, (erro, produtos) => {
+        conversorFormatPreco.formatarPreco(produtos);
+        produtos.forEach(prod => {
+            prod.descricao = `${prod.descricao.substr(0, 30)}...`; 
+        });
+        res.render('produto/produtos', { produtos });
     });
 };

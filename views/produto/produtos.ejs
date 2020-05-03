@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/produtosStyle.css">
+</head>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    <div class="container">
+       <h2 class="mt-4">Produtos</h2>
+       <table class="mt-4 table table-striped">
+            <thead>
+                <th>Imagem</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Tipo</th>
+                <th>Preço</th>
+                <th>Ações</th>
+            </thead>
+            <tbody>
+                <% produtos.forEach((prod) => { %>
+                    <tr>
+                        <td><img src="/media/<%= prod.imagem %>" width="100px"></td>
+                        <td><%= prod.nome %></td>
+                        <td><%= prod.descricao %></td>
+                        <td><%= prod.tipo_produto %></td>
+                        <td>R$ <%= prod.preco %></td>
+                        <td>
+                            <a href="/foodapp/editar/<%= prod.id %>" class="btn btn-warning">Editar</a>
+
+                            <form action="/foodapp/apagar" method="post" onsubmit="confirmarDelecao(event, this)" style="display: inline">
+                                <input type="hidden" name="id" id="id" value="<%= prod.id %>">
+
+                                <button type="submit" class="btn btn-danger">Apagar</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+       </table>
+    </div>
+
+    <script src="/assets/plugins/jquery-3.4.1.min.js"></script>
+    <!--Plugin Jquery para criar máscaras nos inputs-->
+    <script src="/assets/plugins/jquery.mask.min.js"></script>
+    <script>
+        function confirmarDelecao(event, form) {
+            var confirma = confirm('Este produto será apagado permanentemente, deseja continuar?');
+            if(confirma) {
+                form.submit();
+            } else {
+                event.preventDefault();
+            }
+        }
+    </script>
+</body>
+</html>

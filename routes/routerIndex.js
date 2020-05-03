@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const homeController = require('../controllers/homeController');
 const produtoController = require('../controllers/produtoController');
+const categoriasController = require('../controllers/categoriasController');
 const imageMiddleware = require('../middlewares/imageMiddleware');
 
 router.get('/', homeController.home);
@@ -20,12 +21,14 @@ router.post('/editar/:id',
     produtoController.editarAction
 );
 
-router.get('/apagar/:id', produtoController.apagar);
-
+router.post('/apagar', produtoController.apagar);
 router.get('/categorias/:nomeCategoria', produtoController.buscarCategoria);
-
 router.get('/busca/:texto', produtoController.buscarPorTexto);
-
 router.get('/delivery/:id', produtoController.abrirProduto);
+router.get('/comidas', produtoController.abrirTodosProdutos);
+
+router.get('/categorias', categoriasController.categorias);
+router.get('/categoria/nova', categoriasController.novaCategoria);
+router.post('/categoria/nova', categoriasController.novaCategoriaAction);
 
 module.exports = router;

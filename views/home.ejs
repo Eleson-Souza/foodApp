@@ -101,15 +101,6 @@
                     </a>
                         <p class="card-text"><%= res.descricao %></p>
                         <strong><span class="preco">R$ <%= res.preco %></span></strong>
-
-                        <br/><br/>
-                        
-                        <a href="/foodapp/apagar/<%= res.id %>">
-                            <button class="btn btn-danger">Apagar</button>
-                        </a>
-                        <a href="/foodapp/editar/<%= res.id %>">
-                            <button class="btn btn-success">Atualizar</button>
-                        </a>
                     </div>
                 </div>
             <% }); %>

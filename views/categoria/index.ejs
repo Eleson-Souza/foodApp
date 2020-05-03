@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Categorias</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/produtosStyle.css">
+    <style>
+        table {
+            margin: auto;
+        }
+        table td {
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    <div class="container">
+       <h2 class="mt-4">Categorias</h2>
+       <a href="/foodapp/categoria/nova" class="btn btn-success">Nova categoria</a>
+       <table class="mt-4 table table-bordered" style="width: 900px;">
+            <thead>
+                <th style="width: 50px;">Número</th>
+                <th>Nome</th>
+                <th>Slug</th>
+                <th>Ações</th>
+            </thead>
+            <tbody>
+                <% categorias.forEach((categoria, i) => { %>
+                    <tr>
+                        <td class="center"><%= i + 1 %></td>
+                        <td><%= categoria.nome %></td>
+                        <td><%= categoria.slug %></td>
+                        <td>
+                            <a href="#" class="btn btn-warning">Editar</a>
+
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+       </table>
+    </div>
+
+    <script src="/assets/plugins/jquery-3.4.1.min.js"></script>
+    <!--Plugin Jquery para criar máscaras nos inputs-->
+    <script src="/assets/plugins/jquery.mask.min.js"></script>
+    <script>
+        function confirmarDelecao(event, form) {
+            var confirma = confirm('Este produto será apagado permanentemente, deseja continuar?');
+            if(confirma) {
+                form.submit();
+            } else {
+                event.preventDefault();
+            }
+        }
+    </script>
+</body>
+</html>
