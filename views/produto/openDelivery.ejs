@@ -10,11 +10,10 @@
 <body>
     <%- include('../partials/navbar.ejs') %>
     <div class="container">
-
         <div class="row mt-4">
             <div class="col">
                 <img src="/media/<%= result.imagem %>" class="img-responsive produto"/>
-            </div>
+            </div>            
             <div class="col">
                 <h1 id="nome-produto"><%= result.nome %></h1>
                 <h3 id="descricao-produto"><%= result.descricao %></h3>
@@ -24,14 +23,21 @@
                         <h1>
                             R$ <span id="preco"><%= result.preco %></span>
                         </h1>
-                        <button type="button" class="btn btn-primary adicionar" onclick="adicionarCesta();diminuirPagina()">+ Adicionar</button>
+
+                        <form action="/foodapp/carrinho/novo" method="post">
+                            <input type="hidden" name="produto" value="<%= result.nome %>">
+                            <input type="hidden" name="quantidade" value="<%= quant %>">
+                            <input type="hidden" name="preco" value="<%= result.preco %>">
+                            <input type="hidden" name="id" value="<%= result.id %>">
+                            <button type="submit" class="btn btn-primary adicionar"><i class="fas fa-plus-circle mr-2" style="font-size: 23px;"></i>Adicionar</button>
+                        </form>
                     </div>
 
                     <div class="quant_produto">
                         <div class="quant_produto_menos">
                             <img src="/assets/img/icons/minus.png" id="img_menos" onclick="diminuir()"/>
                         </div>
-                        <span id="quant">1</span>
+                        <span id="quant"><%= quant %></span>
                         <div class="quant_produto_mais">
                             <img src="/assets/img/icons/more.png" id="img_mais" onclick="aumentar()"/>
                         </div>
@@ -44,24 +50,6 @@
         &copy; Copyright 2020 - Eleson Souza - Todos os direitos reservados.
     </footer>
     </div>
-
-    <br/>
-        <div class="cesta">
-            <div class="cesta-header">
-                <h5>Todos os Pedidos</h5>
-            </div>
-            <div class="cesta-body">
-                <p id="lista-cesta">
-
-                </p>
-                <p id="preco-total">
-                    Total <span style="float: right">R$ 0,00</span>
-                </p>
-            </div>
-        </div> 
-
-    <%- include('partials/carrinho.ejs') %>
-
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

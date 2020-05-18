@@ -1,0 +1,52 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/navbar.ejs') %>
+
+<body onload="openModal()">
+
+  <button class="btn btn-success mt-2 d-none" id="btnOpenModal" data-toggle="modal" data-target="#modalCarrinho">Abrir</button>
+
+  <!-- Modal Carrinho (com erro)-->
+  <div class="modal fade" id="modalCarrinho" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Carrinho</h5>
+          <a href="/foodapp" class="close">
+            <span>&times;</span>
+          </a>
+        </div>
+        <div class="modal-body">
+          <% carrinho.forEach(item => { %> 
+            <div>
+              <span><%= item.quantidade %>x </span>
+              <span><%= item.produto %></span>
+              <span style="float: right;"><%= item.valor_unitario %></span>
+              <br>
+              <a href="/foodapp/delivery/<%= item.id_produto %>" class="btn btn-outline-success mt-2">Adicionar</a>
+
+              <form action="/foodapp/carrinho/deletar" method="post" style="display: inline;">
+                <input type="hidden" name="id" value="<%= item.id %>">
+                <button type="submit" class="btn btn-outline-danger mt-2">Remover</button>
+              </form>
+            </div>
+            <hr>
+          <% }) %>
+        </div>
+        <div class="modal-footer">
+          <span> 
+            <span> Total </span> 
+            <span><%= valorTotal %></span> 
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  function openModal() {
+    document.getElementById('btnOpenModal').click();
+  }
+</script>
+
+  <%- include('../partials/footer.ejs') %>

@@ -44,7 +44,7 @@ exports.editarAction = (req, res) => {
     let sql;
     // Se existir uma imagem para ser inserida, insere normalmente. Caso contrário não insere.
     if(req.body.imagem) {
-        sql = `update produto set nome = '${req.body.nome}', descricao = '${req.body.descricao}', tipo_produto = '${req.body.tipo_produto}', preco = ${req.body.preco}, imagem = '${req.body.imagem}' where id = ${req.params.id}`;
+        sql = `update produto set nome = '${req.body.nome}', descricao = '${req.body.descricao}', tipo_produto = '${req.body.tipo_produto}', preco = ${preco}, imagem = '${req.body.imagem}' where id = ${req.params.id}`;
     } else {
         sql = `update produto set nome = '${req.body.nome}', descricao = '${req.body.descricao}', tipo_produto = '${req.body.tipo_produto}', preco = ${preco} where id = ${req.params.id}`
     }
@@ -93,7 +93,7 @@ exports.buscarPorTexto = (req, res) => {
         
         let texto = req.params.texto;
         conversorFormatPreco.formatarPreco(result);
-        res.render('home', { result, texto });
+        res.render('home', { result, texto, success: req.flash('success'), error: req.flash('error') });
     });
 };
 
@@ -106,7 +106,7 @@ exports.abrirProduto = (req, res) => {
         }
 
         conversorFormatPreco.formatarPreco(result);
-        res.render('produto/openDelivery', { result: result[0] });
+        res.render('produto/openDelivery', { result: result[0], quant: 1 });
     });
 };
 
@@ -114,8 +114,13 @@ exports.abrirTodosProdutos = (req, res) => {
     conexao.query(`select * from produto`, (erro, produtos) => {
         conversorFormatPreco.formatarPreco(produtos);
         produtos.forEach(prod => {
-            prod.descricao = `${prod.descricao.substr(0, 30)}...`; 
+            prod.desc = `${prod.descricao.substr(0, 30)}...`; 
         });
-        res.render('produto/produtos', { produtos });
+        res.render('produto/produtos', { 
+            produtos, 
+            success: req.flash('success'), 
+            error: req.flash('error')
+        });
+
     });
 };

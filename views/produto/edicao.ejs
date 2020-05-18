@@ -26,7 +26,11 @@
                 <select id="tipo_produto" name="tipo_produto" class="form-control">
                     <option>Nenhuma</option>
                     <% categorias.forEach(categoria => { %>
-                        <option><%= categoria.nome %></option>
+                        <% if(categoria.nome == result.tipo_produto) { %>
+                            <option selected><%= categoria.nome %></option>
+                        <% } else { %>
+                            <option><%= categoria.nome %></option>
+                        <% } %>                        
                     <% }); %>
                 </select>
             </div>
@@ -38,8 +42,11 @@
                 <label for="preco">Imagem</label>
                 <input type="file" name="imagem" id="imagem" class="form-control">
 
-                <img src="/media/<%= result.imagem %>" width="300px"/>
-                <h6 class="mt-2">Nenhuma imagem salva</h6>
+                <% if(result.imagem == 'undefined') { %>
+                    <h6 class="mt-2">Nenhuma imagem salva</h6>
+                <% } else { %>
+                    <img src="/media/<%= result.imagem %>" width="300px"/>
+                <% } %>
             </div>
 
             <button type="reset" class="btn btn-danger">Limpar</button>

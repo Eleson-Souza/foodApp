@@ -9,11 +9,22 @@
 </head>
 <body>
     <%- include('partials/navbar.ejs') %>
-    <div class="container">
+    <div class="container mt-1">
+        <% if(success.length > 0) { %>
+            <div class="alert alert-success">
+                <strong><%= success %></strong>
+            </div>
+        <% } else if(error.length > 0) { %>
+            <div class="alert alert-danger">
+                <strong><%= error %></strong>
+            </div>
+        <% } %>
+
         <div class="form-inline busca">
             <img src="/assets/img/icons/search.png">
             <input class="form-control" name="busca" id="campoBusca" type="search" placeholder="Pesquise por prato" size="34" onkeyup="confirmar(event)">
         </div>
+        
         <h1>Página Home</h1>
         <h4 class="mb-3">Categorias</h4>
                         

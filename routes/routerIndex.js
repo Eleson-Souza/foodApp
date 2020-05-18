@@ -3,6 +3,7 @@ const router = express.Router();
 const homeController = require('../controllers/homeController');
 const produtoController = require('../controllers/produtoController');
 const categoriasController = require('../controllers/categoriasController');
+const carrinhoController = require('../controllers/carrinhoController');
 const imageMiddleware = require('../middlewares/imageMiddleware');
 
 router.get('/', homeController.home);
@@ -30,5 +31,9 @@ router.get('/comidas', produtoController.abrirTodosProdutos);
 router.get('/categorias', categoriasController.categorias);
 router.get('/categoria/nova', categoriasController.novaCategoria);
 router.post('/categoria/nova', categoriasController.novaCategoriaAction);
+
+router.post('/carrinho/novo', carrinhoController.novoCarrinho);
+router.get('/carrinho', carrinhoController.abrirCarrinho);
+router.post('/carrinho/deletar', carrinhoController.apagarItem);
 
 module.exports = router;

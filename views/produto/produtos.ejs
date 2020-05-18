@@ -10,6 +10,15 @@
 </head>
 <body>
     <%- include('../partials/navbar.ejs') %>
+    <% if(success.length > 0) { %>
+        <div class="alert alert-success">
+            <strong><%= success %></strong>
+        </div>
+      <% } else if(error.length > 0) { %>
+        <div class="alert alert-danger">
+          <strong><%= error %></strong>
+        </div>
+      <% } %>
     <div class="container">
        <h2 class="mt-4">Produtos</h2>
        <table class="mt-4 table table-striped">
@@ -26,7 +35,7 @@
                     <tr>
                         <td><img src="/media/<%= prod.imagem %>" width="100px"></td>
                         <td><%= prod.nome %></td>
-                        <td><%= prod.descricao %></td>
+                        <td title="<%= prod.descricao %>"><%= prod.desc %></td>
                         <td><%= prod.tipo_produto %></td>
                         <td>R$ <%= prod.preco %></td>
                         <td>

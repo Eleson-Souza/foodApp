@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/navbarStyle.css">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 <nav class="navbar navbar-expand-lg" style="background-color:#50a773;">
   <a class="navbar-brand" href="/foodapp">
@@ -23,26 +24,14 @@
         <a class="nav-link" href="/foodapp/categorias">Categorias</a>
       </li>
     </ul>
+
+    <ul class="navbar-nav ml-auto menu">
+      <li class="nav-item">
+        <a href="/foodapp/carrinho" class="nav-link">
+          <i class="fas fa-cart-plus" style="font-size: 35px"></i>
+          <span class="badge badge-danger"></span>
+        </a>
+      </li>
+    </ul>
   </div>
 </nav>
-
-<!-- {{#flashes}}
-  {{#success}}
-    <div class="alert alert-success alert-dismissible">
-      <a href="#" class="close" data-dismiss="alert">&times;</a>
-      <strong>{{.}}</strong>
-    </div>
-  {{/success}}
-  {{#error}}
-    <div class="alert alert-danger alert-dismissible">
-      <a href="#" class="close" data-dismiss="alert">&times;</a>
-      {{.}}
-    </div>
-  {{/error}}
-  {{#info}}
-    <div class="alert alert-info alert-dismissible">
-      <a href="#" class="close" data-dismiss="alert">&times;</a>
-      {{.}}
-    </div>
-  {{/info}}
-{{/flashes}} -->
