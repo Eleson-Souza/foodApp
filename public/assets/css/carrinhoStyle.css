@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Chelsea+Market&family=Roboto&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}
+
+#desc {
+    margin: 0px 92px 0px 0px;
+    font-size: 15px;
+}
+
+hr {
+    margin: 16px;
+}
+
+.modal-footer {
+    display: block;
+    padding: 0;
+}
+
+.align-right {
+    text-align: right;
+    padding-bottom: 11px;
+}
+
+.center {
+    text-align: center;
+    margin-top: 10px;
+}

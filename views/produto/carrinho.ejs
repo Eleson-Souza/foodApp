@@ -1,4 +1,5 @@
 <%- include('../partials/header.ejs') %>
+<link rel="stylesheet" href="/assets/css/carrinhoStyle.css">
 <%- include('../partials/navbar.ejs') %>
 
 <body onload="openModal()">
@@ -10,33 +11,52 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Carrinho</h5>
+          <h4 class="modal-title">Carrinho</h4>
           <a href="/foodapp" class="close">
             <span>&times;</span>
           </a>
         </div>
         <div class="modal-body">
-          <% carrinho.forEach(item => { %> 
-            <div>
-              <span><%= item.quantidade %>x </span>
-              <span><%= item.produto %></span>
-              <span style="float: right;"><%= item.valor_unitario %></span>
-              <br>
-              <a href="/foodapp/delivery/<%= item.id_produto %>" class="btn btn-outline-success mt-2">Adicionar</a>
 
-              <form action="/foodapp/carrinho/deletar" method="post" style="display: inline;">
-                <input type="hidden" name="id" value="<%= item.id %>">
-                <button type="submit" class="btn btn-outline-danger mt-2">Remover</button>
-              </form>
+          <% if(carrinho.length == 0) { %>
+
+            <div style="text-align: center; font-size: 18px;">
+              <img src="/assets/img/carrinho_vazio.png" alt="" width="140px">
+              <h5 class="mt-2">Seu carrinho está vazio!</h5>
+              <p>Adicione mais items</p>
             </div>
-            <hr>
-          <% }) %>
-        </div>
-        <div class="modal-footer">
-          <span> 
-            <span> Total </span> 
-            <span><%= valorTotal %></span> 
-          </span>
+
+          <% } else { %>
+            
+            <% carrinho.forEach(item => { %> 
+              <div>
+                <span><%= item.quantidade %>x </span>
+                <span><%= item.produto %></span>
+                <strong style="float: right;"><%= item.valor_unitario %></strong>
+                <br>
+                <p id="desc"><%= item.descricao %></p>
+                <a href="/foodapp/delivery/<%= item.id_produto %>" class="btn btn-sm btn-outline-success mt-2">Adicionar</a>
+  
+                <form action="/foodapp/carrinho/deletar" method="post" style="display: inline;">
+                  <input type="hidden" name="id" value="<%= item.id %>">
+                  <button type="submit" class="btn btn-sm btn-outline-danger mt-2">Remover</button>
+                </form>
+              </div>
+              <hr>
+            <% }) %>
+
+            <div class="modal-footer" style="border: none">
+                <p class="align-right">
+                  <strong>Total: <%= valorTotal %></strong>
+                </p>
+              <hr/>
+              <div class="center">
+                <a href="/foodapp/pagamento" class="btn btn-danger">Definir forma de pagamento</a>
+              </div>
+            </div>
+            
+          <% } %>
+
         </div>
       </div>
     </div>

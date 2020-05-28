@@ -1,8 +1,7 @@
 const Conexao = require('../models/Conexao');
-const conversorFormatPreco = require('../public/assets/utils/conversorFormatPreco');
 
 exports.novoCarrinho = (req, res) => {
-    var {produto, quantidade, preco, id} = req.body;
+    var {produto, descricao, quantidade, preco, id} = req.body;
     preco = preco.replace(',', '.');
 
     Conexao.query(`select * from carrinho where id_produto = ${id}`, (erro, prod) => {
@@ -19,9 +18,10 @@ exports.novoCarrinho = (req, res) => {
 
         } else {            
             Conexao.query(`insert into carrinho values
-            (default, '${produto}', ${quantidade}, ${preco}, ${id})`, (erro) => {
+            (default, '${produto}', '${descricao}', ${quantidade}, ${preco}, ${id})`, (erro) => {
                 if(erro) {
                     req.flash('error', 'Houve um erro ao inserir no carrinho');
+                    console.log(erro);
                     return;
                 }
 

@@ -26,6 +26,7 @@
 
                         <form action="/foodapp/carrinho/novo" method="post">
                             <input type="hidden" name="produto" value="<%= result.nome %>">
+                            <input type="hidden" name="descricao" value="<%= result.descricao %>">
                             <input type="hidden" name="quantidade" value="<%= quant %>">
                             <input type="hidden" name="preco" value="<%= result.preco %>">
                             <input type="hidden" name="id" value="<%= result.id %>">

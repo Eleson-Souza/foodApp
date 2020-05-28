@@ -5,6 +5,7 @@ const produtoController = require('../controllers/produtoController');
 const categoriasController = require('../controllers/categoriasController');
 const carrinhoController = require('../controllers/carrinhoController');
 const imageMiddleware = require('../middlewares/imageMiddleware');
+const pagamentoController = require('../controllers/pagamentoController');
 
 router.get('/', homeController.home);
 
@@ -35,5 +36,8 @@ router.post('/categoria/nova', categoriasController.novaCategoriaAction);
 router.post('/carrinho/novo', carrinhoController.novoCarrinho);
 router.get('/carrinho', carrinhoController.abrirCarrinho);
 router.post('/carrinho/deletar', carrinhoController.apagarItem);
+
+router.get('/pagamento', pagamentoController.criarPagamento);
+router.get('/finalizar-pagamento', pagamentoController.finalizarPagamento);
 
 module.exports = router;
