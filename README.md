@@ -11,9 +11,9 @@ Aplicação web desenvolvida com NodeJS, JavaScript, HTML, CSS e MySql para banc
 * Bootstrap
 * GIT
 * MySql
-* Integração com API do Paypal
+* API do Paypal
 
-## Demo
+## Vídeo Demo
 [![Acesse o vídeo](../master/public/assets/img/capa_demo.png)](https://drive.google.com/file/d/1U5aNVNx6AAEX44-llSd-htjAk6Om8QCG/view?usp=sharing)
 
 ## Autor
