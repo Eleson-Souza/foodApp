@@ -1,8 +1,8 @@
-# FoodApp
+# FoodApp :hamburger::pizza:
 
 Aplicação web desenvolvida com NodeJS, JavaScript, HTML, CSS e MySql para banco de dados. O projeto mostra um site de delivery com diversos pratos, que podem ser inseridos, alterados, deletados ou pesquisados no banco.
 
-## Tecnologias
+## Tecnologias  :rocket:
 
 * HTML
 * CSS
@@ -13,7 +13,7 @@ Aplicação web desenvolvida com NodeJS, JavaScript, HTML, CSS e MySql para banc
 * MySql
 * API do Paypal
 
-## Vídeo Demo
+## Vídeo Demo :video_camera:
 [![Acesse o vídeo](../master/public/assets/img/capa_demo.png)](https://drive.google.com/file/d/1U5aNVNx6AAEX44-llSd-htjAk6Om8QCG/view?usp=sharing)
 
 ## Autor
